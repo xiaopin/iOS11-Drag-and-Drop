@@ -1,5 +1,9 @@
 # iOS11-Drag-and-Drop
 
+[![Build](https://img.shields.io/wercker/ci/wercker/docs.svg)]()
+[![Platform](https://img.shields.io/badge/platform-iOS-blue.svg?style=flat)]()
+[![License](https://img.shields.io/badge/license-MIT-orange.svg?style=flat)]()
+
 iOS11 Drag and Drop功能的简单演示
 
 ## Feature
@@ -14,3 +18,13 @@ iOS11 Drag and Drop功能的简单演示
 - Xcode9.0+
 - iOS11.0+
 - Swift4.0+
+
+
+## Preview
+
+![GIF](./preview.gif)
+
+
+## License
+
+基于MIT License进行开源，详细内容请参阅`LICENSE`文件。
