@@ -15,8 +15,8 @@ class TableViewController: UITableViewController {
         let size = CGSize(width: 30.0, height: 30.0)
         for i in 0..<30 {
             guard let image = UIImage.fromColor(.random, imageSize: size) else { continue }
-            let tupe = (String(i), image)
-            datas.append(tupe)
+            let tuple = (String(i), image)
+            datas.append(tuple)
         }
         return datas
     }()
@@ -97,8 +97,15 @@ extension TableViewController: UITableViewDropDelegate {
         }
     }
     
+    
     func tableView(_ tableView: UITableView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UITableViewDropProposal {
         return UITableViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
+    }
+    
+    
+    func tableView(_ tableView: UITableView, canHandle session: UIDropSession) -> Bool {
+        // Only receive image data
+        return session.canLoadObjects(ofClass: UIImage.self)
     }
     
 }

@@ -12,13 +12,7 @@ private let reuseIdentifier = "Cell"
 
 class CollectionViewController: UICollectionViewController {
     
-    private var colors: [UIColor] = {
-        var colors = [UIColor]()
-        for _ in 0..<30 {
-            colors.append(.random)
-        }
-        return colors
-    }()
+    private var colors: [UIColor] = Array(repeating: 0, count: 30).map({_ in UIColor.random})
     
     // MARK: - Lifecycle
 
@@ -89,6 +83,12 @@ extension CollectionViewController: UICollectionViewDropDelegate {
     
     func collectionView(_ collectionView: UICollectionView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UICollectionViewDropProposal {
         return UICollectionViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, canHandle session: UIDropSession) -> Bool {
+        // Only receive color data
+        return session.canLoadObjects(ofClass: UIColor.self)
     }
     
 }

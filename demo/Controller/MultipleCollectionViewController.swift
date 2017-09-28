@@ -15,19 +15,13 @@ class MultipleCollectionViewController: UIViewController {
     
     @IBOutlet weak var dragCollectionView: UICollectionView!
     @IBOutlet weak var dropCollectionView: UICollectionView!
-    private var dragColors: [UIColor] = {
-        var colors = [UIColor]()
-        for _ in 0..<30 {
-            colors.append(.random)
-        }
-        return colors
-    }()
+    private var dragColors: [UIColor] = Array(repeating: 0, count: 30).map { _ in UIColor.random}
     private var dropColors: [UIColor] = []
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Sorting by drag and drop"
+        title = "Multi-Touch"
         dragCollectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         dropCollectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         // Configure drag and drop
@@ -112,6 +106,12 @@ extension MultipleCollectionViewController: UICollectionViewDropDelegate {
     
     func collectionView(_ collectionView: UICollectionView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UICollectionViewDropProposal {
         return UICollectionViewDropProposal(operation: .copy, intent: .insertAtDestinationIndexPath)
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, canHandle session: UIDropSession) -> Bool {
+        // Only receive color data
+        return session.canLoadObjects(ofClass: UIColor.self)
     }
     
 }
