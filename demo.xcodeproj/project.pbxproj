@@ -15,6 +15,8 @@
 		123EE48D1F7A4E0100C30038 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 123EE48C1F7A4E0100C30038 /* Assets.xcassets */; };
 		123EE4901F7A4E0100C30038 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 123EE48E1F7A4E0100C30038 /* LaunchScreen.storyboard */; };
 		123EE4981F7A4E5100C30038 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123EE4971F7A4E5100C30038 /* TableViewController.swift */; };
+		1248C6891F7CC8BA00FE62EE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1248C6881F7CC8BA00FE62EE /* ViewController.swift */; };
+		129CD6951F7CD56600454C6D /* DropLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129CD6941F7CD56600454C6D /* DropLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		123EE48F1F7A4E0100C30038 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		123EE4911F7A4E0100C30038 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		123EE4971F7A4E5100C30038 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		1248C6881F7CC8BA00FE62EE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		129CD6941F7CD56600454C6D /* DropLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +51,7 @@
 				123EE4971F7A4E5100C30038 /* TableViewController.swift */,
 				1222C43A1F7B7EDC00E26EB1 /* CollectionViewController.swift */,
 				1222C43C1F7B904900E26EB1 /* MultipleCollectionViewController.swift */,
+				1248C6881F7CC8BA00FE62EE /* ViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -71,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				1222C4391F7B78EE00E26EB1 /* Controller */,
+				129CD6911F7CD16300454C6D /* Views */,
 				123EE4851F7A4E0100C30038 /* AppDelegate.swift */,
 				1222C40C1F7B30FD00E26EB1 /* extensions.swift */,
 				123EE4891F7A4E0100C30038 /* Main.storyboard */,
@@ -79,6 +85,14 @@
 				123EE4911F7A4E0100C30038 /* Info.plist */,
 			);
 			path = demo;
+			sourceTree = "<group>";
+		};
+		129CD6911F7CD16300454C6D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				129CD6941F7CD56600454C6D /* DropLabel.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,11 +167,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1248C6891F7CC8BA00FE62EE /* ViewController.swift in Sources */,
 				1222C43B1F7B7EDC00E26EB1 /* CollectionViewController.swift in Sources */,
 				123EE4981F7A4E5100C30038 /* TableViewController.swift in Sources */,
 				1222C43D1F7B904900E26EB1 /* MultipleCollectionViewController.swift in Sources */,
 				123EE4861F7A4E0100C30038 /* AppDelegate.swift in Sources */,
 				1222C40D1F7B30FD00E26EB1 /* extensions.swift in Sources */,
+				129CD6951F7CD56600454C6D /* DropLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,6 +313,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = demo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.0daybug.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -312,6 +329,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = demo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.0daybug.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
