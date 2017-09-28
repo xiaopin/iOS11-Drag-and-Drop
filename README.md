@@ -11,6 +11,7 @@ iOS11 Drag and Drop功能的简单演示
 - UITableView中利用Drag and Drop功能进行排序
 - UICollectionView中利用Drag and Drop功能进行排序
 - 把数据从一个UICollectionView中复制到另一个UICollectionView中，并且支持拖放多个数据
+- UILabel通过Drag and Drop展示新文本
 
 
 ## Requirements
@@ -23,6 +24,8 @@ iOS11 Drag and Drop功能的简单演示
 ## Preview
 
 ![GIF](./preview.gif)
+
+![GIF](./iPad.gif)
 
 
 ## License
