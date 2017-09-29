@@ -57,4 +57,41 @@ extension ViewController: UIDragInteractionDelegate {
         return [dragItem]
     }
     
+    
+    /// Returns a custom drag preview view
+    func dragInteraction(_ interaction: UIDragInteraction, previewForLifting item: UIDragItem, session: UIDragSession) -> UITargetedDragPreview? {
+        guard let text = dragLabel.text as NSString? else { return nil }
+        let rect = text.boundingRect(with: CGSize(width: dragLabel.frame.width, height: dragLabel.frame.height),
+                                     options: NSStringDrawingOptions.usesLineFragmentOrigin,
+                                     attributes: [NSAttributedStringKey.font: dragLabel.font],
+                                     context: nil)
+        
+//        UIGraphicsBeginImageContext(rect.size)
+//        defer { UIGraphicsEndImageContext() }
+//        guard let context = UIGraphicsGetCurrentContext() else { return nil }
+//        context.setFillColor(UIColor.random.cgColor)
+//        context.fill(rect)
+//        let paragraphStyle = NSMutableParagraphStyle()
+//        paragraphStyle.lineBreakMode = NSLineBreakMode.byCharWrapping
+//        paragraphStyle.alignment = dragLabel.textAlignment
+//        text.draw(in: rect, withAttributes: [.font: dragLabel.font, .paragraphStyle: paragraphStyle])
+//        guard let image = UIGraphicsGetImageFromCurrentImageContext() else { return nil }
+//
+//        let imageView = UIImageView(image: image)
+//        let dragView = interaction.view!
+//        let dragPoint = session.location(in: dragView)
+//        let target = UIDragPreviewTarget(container: dragView, center: dragPoint)
+//        return UITargetedDragPreview(view: imageView, parameters: UIDragPreviewParameters(), target: target)
+        
+        let previewLabel = UILabel(frame: rect)
+        previewLabel.text = text as String
+        previewLabel.textAlignment = dragLabel.textAlignment
+        previewLabel.numberOfLines = 0
+        previewLabel.backgroundColor = .random
+        let dragView = interaction.view!
+        let dragPoint = session.location(in: dragView)
+        let target = UIDragPreviewTarget(container: dragView, center: dragPoint)
+        return UITargetedDragPreview(view: previewLabel, parameters: UIDragPreviewParameters(), target: target)
+    }
+    
 }
