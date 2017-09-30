@@ -54,6 +54,7 @@ extension ViewController: UIDragInteractionDelegate {
         guard let text = dragLabel.text as NSString? else { return [] }
         let itemProvider = NSItemProvider(object: text)
         let dragItem = UIDragItem(itemProvider: itemProvider)
+        dragItem.localObject = dragLabel
         return [dragItem]
     }
     
@@ -92,6 +93,40 @@ extension ViewController: UIDragInteractionDelegate {
         let dragPoint = session.location(in: dragView)
         let target = UIDragPreviewTarget(container: dragView, center: dragPoint)
         return UITargetedDragPreview(view: previewLabel, parameters: UIDragPreviewParameters(), target: target)
+    }
+    
+    
+    func dragInteraction(_ interaction: UIDragInteraction, previewForCancelling item: UIDragItem, withDefault defaultPreview: UITargetedDragPreview) -> UITargetedDragPreview? {
+        let previewView = defaultPreview.view
+        // Display the return animation when the drag and drop is canceled
+        previewView.center = view.convert(dragLabel.center, to: view.window)
+        let target = UIDragPreviewTarget(container: view.window!, center: previewView.center)
+        return UITargetedDragPreview(view: previewView, parameters: UIDragPreviewParameters(), target: target)
+    }
+    
+    
+    func dragInteraction(_ interaction: UIDragInteraction, willAnimateLiftWith animator: UIDragAnimating, session: UIDragSession) {
+        animator.addAnimations {
+            session.items.forEach {
+                if let view = $0.localObject as? UIView { view.alpha = 0.5 }
+            }
+        }
+    }
+    
+    
+    func dragInteraction(_ interaction: UIDragInteraction, session: UIDragSession, didEndWith operation: UIDropOperation) {
+        session.items.forEach({ (dragItem) in
+            guard let view = dragItem.localObject as? UIView else { return }
+            view.alpha = 1.0
+        })
+    }
+    
+    
+    func dragInteraction(_ interaction: UIDragInteraction, item: UIDragItem, willAnimateCancelWith animator: UIDragAnimating) {
+        guard let view = item.localObject as? UIView else { return }
+        animator.addAnimations {
+            view.alpha = 1.0
+        }
     }
     
 }
